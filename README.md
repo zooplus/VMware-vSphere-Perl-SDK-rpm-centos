@@ -2,7 +2,7 @@
 Description
 -----------
 
-Build an RPM of *VMware-vSphere-Perl-SDK-\*.x86_64.tar.gz* on CentOS6/CentOS7.
+Build an RPM of `VMware-vSphere-Perl-SDK-*.x86_64.tar.gz` on CentOS6/CentOS7.
 
 
 ------------
@@ -11,7 +11,7 @@ Sample Usage
 
 Install VirtualBox and Vagrant https://www.virtualbox.org/ https://www.vagrantup.com/downloads.html
 
-Download *VMware-vSphere-Perl-SDK-\*.x86_64.tar.gz* under `/tmp` from
+Download `VMware-vSphere-Perl-SDK-*.x86_64.tar.gz` under `/tmp` from
 [https://my.vmware.com/group/vmware/downloads](https://my.vmware.com/group/vmware/downloads).
 This requires creating of an account at VMware.
 
