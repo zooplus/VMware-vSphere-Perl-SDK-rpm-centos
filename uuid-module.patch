@@ -1,0 +1,47 @@
+# $Id$
+--- bin/vmware-uninstall-vSphere-CLI.pl	2011-06-02 01:52:30.000000000 +1000
++++ bin/vmware-uninstall-vSphere-CLI.pl	2011-08-29 13:15:19.558032827 +1000
+@@ -2370,7 +2370,7 @@
+     {'module' => 'Data::Dumper',                  'version' => '2.121',    'path' => 'Data-Dumper-2.121'},
+     {'module' => 'Class::MethodMaker',            'version' => '2.10',     'path' => 'Class-MethodMaker-2.10'},
+     {'module' => 'HTML::Parser',                  'version' => '3.60',     'path' => 'HTML-Parser-3.60'},
+-    {'module' => 'UUID',                          'version' => '0.03',     'path' => 'UUID-0.03'},
++    {'module' => 'Data::UUID',                    'version' => '1.217',    'path' => 'Data-UUID-1.217'},
+     {'module' => 'Data::Dump',                    'version' => '1.15',     'path' => 'Data-Dump-1.15'},
+     {'module' => 'SOAP::Lite',                    'version' => '0.710.08', 'path' => 'SOAP-Lite-0.710.08'},
+     {'module' => 'URI',                           'version' => '1.37',     'path' => 'URI-1.37'},
+--- lib/WSMan/share/WSMan/WSBasic.pm	2011-05-17 08:22:08.000000000 +1000
++++ lib/WSMan/share/WSMan/WSBasic.pm	2011-08-29 13:01:52.541492208 +1000
+@@ -3,7 +3,7 @@
+ 
+ #=========================<Imports>==================================#
+ use SOAP::Lite;
+-use UUID;
++use Data::UUID;
+ #use MIME::Base64;
+ #=========================</Imports>=================================#
+ 
+@@ -91,10 +91,8 @@
+ 
+ #Method to generate UUIDs.
+ sub _get_uuid{
+-    my ($uuid, $string);
+-    UUID::generate($uuid);
+-    UUID::unparse($uuid, $string);
+-    return $string;
++    my $ug = new Data::UUID;
++    return $ug->create_str();
+ }
+ 
+ #Identify Method.
+--- Makefile.PL	2011-06-02 01:52:29.000000000 +1000
++++ Makefile.PL	2011-08-29 13:15:33.956363049 +1000
+@@ -74,7 +74,7 @@
+                           'Class::MethodMaker' => '2.08',
+                           'XML::LibXML' => '1.58',
+                           'LWP' => '5.8.05',
+-                          'UUID' => '0.03',
++                          'Data::UUID' => '1.0',
+                           'SOAP::Lite' => '0.67'},
+    #
+    # These macros put things in the usual spot if you are running
