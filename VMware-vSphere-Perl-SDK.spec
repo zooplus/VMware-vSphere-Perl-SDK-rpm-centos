@@ -1,17 +1,17 @@
 # ERROR: No build ID note found in .../opt/VMware-vSphere-Perl-SDK/lib/perl5/VMware/pyexe/datetime.so
 #%%global debug_package %%{nil}
 
-%global release_tag 3561779
+%global release_tag 2043780
 
 Summary:   vSphere Perl SDK for vSphere
 Name:      VMware-vSphere-Perl-SDK
-Version:   6.0.0
+Version:   5.5.0
 Release:   %{release_tag}.2%{?dist}
 License:   VMware
 Source:    %{name}-%{version}-%{release_tag}.x86_64.tar.gz
 Patch0:    makefile.patch
 Patch1:    uuid-module.patch
-URL:       https://developercenter.vmware.com/web/sdk/60/vsphere-perl
+URL:       https://github.com/zooplus/VMware-vSphere-Perl-SDK-rpm-centos
 
 # avoid circular dependencies of VMware-vSphere-Perl-SDK on itself
 Autoreq:   0
@@ -162,7 +162,7 @@ make install
 %{__rm} -rf $RPM_BUILD_ROOT%{prefix}/lib/perl5/VMware/pyexe/
 
 # must use old lib/libwww-perl-5.805 in 6.0.0-3561779 otherwise check_vmware_api.pl hangs
-# check_vmware_api.pl hangs with and perl-libwww-perl-6.05-2.el7.noarch perl-LWP-Protocol-https-6.04 
+# check_vmware_api.pl hangs with and perl-libwww-perl-6.05-2.el7.noarch perl-LWP-Protocol-https-6.04
 %{__cp} -rp lib/libwww-perl-*/lib/LWP $RPM_BUILD_ROOT%{prefix}/lib/perl5/LWP
 # check_vmware_api.pl hangs with perl-Net-HTTP-6.06-2.el7.noarch
 %{__cp} -rp lib/libwww-perl-*/lib/Net $RPM_BUILD_ROOT%{prefix}/lib/perl5/Net
@@ -182,6 +182,9 @@ make install
 
 
 %changelog
+* Thu Feb 8 2018 Artashes Arabajyan <Marcin.Dulak@gmail.com> 5.5.0 2043780
+- SDK 5.5.0 2043780
+
 * Wed Jul 13 2016 Marcin Dulak <Marcin.Dulak@gmail.com> 6.0.0 3561779-2
 - update and package as a single RPM
 
